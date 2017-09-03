@@ -1,0 +1,16 @@
+{
+  "pages":[
+     
+    "pages/index/index",
+    "pages/index/detail/detail",
+    "pages/index/detail/play/play"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#31C27C",
+    "navigationBarTitleText": "QQ音乐",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh":"true"
+  }
+}

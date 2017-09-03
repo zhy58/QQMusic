@@ -1,0 +1,132 @@
+<view class="index">
+  <block wx:for="{{tab_data}}" wx:key="item">
+    <view bindtap="tab_click" class="tab {{data_index == index ? 'active': ''}}" data-id="{{index}}">{{item}}</view>
+  </block>
+</view>
+
+<view class="recommend" hidden="{{data_index!= 0}}">  
+  <swiper autoplay="ture" indicator-dots="ture" indicator-active-color="#fff">
+    <block wx:for="{{swiper.slider}}" wx:key="key">
+      <swiper-item class="img">
+        <image src="{{item.picUrl}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="main">
+
+      <view class="content">
+        <view class="title">电台</view>
+        <view class="body">
+
+          <block wx:for="{{swiper.radioList}}" wx:key="key">
+          <view class="body_box" data-list="{{index}}" bindtap="radioList_click">
+            <image src="{{item.picUrl}}"></image>
+            <image src="/images/icon-play.png" class="play"></image>
+            <view class="text">{{item.Ftitle}}</view>
+          </view>
+          </block>
+
+         </view>
+       </view>
+
+       <view class="content">
+        <view class="title">热门歌单</view>
+        <view class="body"> 
+        <block wx:for="{{swiper.songList}}" wx:key="key">
+                 
+          <view class="body_box">
+            <image src="{{item.picUrl}}"></image>
+            <image src="/images/icon-play.png" class="play"></image>
+            <view class="text">{{item.songListDesc}}</view>
+            <view class="text">{{item.songListAuthor}}</view>
+          </view>
+
+        </block>
+        </view>
+      </view>    
+
+    </view>
+
+</view>
+
+<view class="ranking" hidden="{{data_index!= 1}}">
+
+ <view class="box">
+  <block wx:for="{{data_ranking.topList}}" wx:key="key">
+   <view class="ranking_list" bindtap="ranking_click" data-id="{{index}}">
+      <image src="{{item.picUrl}}"></image>
+      <image src="/images/icon-listen.png" class="listen"></image>
+      <text class="listen">{{item.listenCount}}</text>
+
+      <view class="song_detail">
+        <view class="title">{{item.topTitle}}</view>
+
+        <block wx:for="{{item.songList}}" wx:key="key">
+          <view class="song_text">
+            <text>{{(index+1) +' '+ item.songname}}</text>
+            <text class="subtitle">{{' - '+item.singername}}</text>
+          </view>
+        </block>
+
+      </view>
+      <view class="arrow"> > </view>
+    </view>
+   </block>
+ </view>
+
+</view>
+<view class="search" hidden="{{data_index!= 2}}">
+<!--搜索-->
+  <view class="search_search">
+    <input type="search" bindinput="search_key_input" bindtap="input_click" class="search_text" placeholder="搜索歌曲、歌单、专辑"/>
+    <text class="qx" bindtap="search_click">搜索</text>
+  </view>
+  <!--搜索记录-->
+    <view class="search_record" hidden="{{flag}}">
+      <view class="search_all_record">
+
+        <block wx:for="{{key_record}}" wx:key="item">
+          <view class="record">
+            <view class="record_left">
+              <view class="song_img">
+                <image src="/images/icon-earth.png"></image>
+              </view>
+              <view bindtap="record_text_click" data-item="{{item}}" class="record_text">{{item}}</view>
+            </view>
+            <view bindtap="clear_record" data-index="{{index}}" class="record_clear">x</view>
+          </view>
+        </block>
+
+      </view>
+      <view bindtap="clear_all_record" class="clear_all_record">清楚搜索记录</view>
+    </view>
+  <!--热门搜索-->
+  <view class="search_hot container" hidden="{{hidden}}">
+    <view class="search_title">热门搜索</view>
+      <view class="search_hot_text">
+      <view bindtap="hot_key_click" data-key="{{data_search.special_key}}" class="text_hot">{{data_search.special_key}}</view>
+
+      <block wx:for="{{hot_data}}" wx:key="item">
+        <view bindtap="hot_key_click" data-key="{{item.k}}" class="text_hot">{{item.k}}</view>
+      </block>
+
+    </view>    
+  </view>
+<!--歌曲搜索结果-->
+  <scroll-view scroll-y="true" bindscrolltolower="scroll_bottom" hidden="{{show}}">
+      <view class="song_box">
+        <block wx:for="{{search_song}}" wx:key="item">
+          <view class="song_list" bindtap="song_list_click" data-id="{{index}}">
+            <view class="song_img">
+              <image src="/images/icon-music.png"></image>
+            </view>
+            <view class="song_text">
+              <view class="song_title">{{item.songname}}</view>
+              <view class="song_subtitle">{{item.singer[0].name}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+</view>

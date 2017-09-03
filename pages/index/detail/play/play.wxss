@@ -1,0 +1,38 @@
+/* pages/index/detail/play/play.wxss */
+.box{
+  height: 100vh;
+  width: 100vw;
+}
+.play_top{
+  height: 170rpx;
+  background: rgba(0,0,0,.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.play_title{
+  display: flex;  
+}
+.singer_name{
+  font-size: 32rpx;
+}
+.play_top image.singer_img{
+  width:120rpx;
+  height: 120rpx;
+  margin:0 30rpx;
+}
+.play_top image.play{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 40rpx;
+}
+.singer_name{
+  flex-direction: column;
+}
+.song_name{
+  width: 390rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,259 @@
+.index{
+  height: 80rpx;
+  display: flex;  
+  align-items: center; 
+  background: white; 
+}
+.tab{
+  height: 76rpx;  
+  border-bottom: 4rpx solid #f4f4f4;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active{
+  border-bottom: 4rpx solid #31C27C;
+}
+
+
+/**********recommend*********************/
+page{
+  background: #f4f4f4;  
+}
+.recommend{
+  margin-bottom: 30rpx;
+}
+.recommend swiper .img image{
+  width: 100vw;
+  /*height: 300rpx;*/
+}
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 5rpx;
+  font-size: 40rpx;
+}
+.content{
+  padding: 0rpx 16rpx;
+}
+.body_box image{
+  width: 352rpx;
+  height: 352rpx;
+
+}
+.body_box{
+  position: relative;
+}
+.body_box .play{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: 280rpx;
+  right: 10rpx;
+  z-index: 2;
+}
+.body{
+  display: flex;
+  background: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.text{
+  font-size: 28rpx;
+  color:#3a3a3a;
+  min-height: 56rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 352rpx;
+}
+
+/*************ranking_list*************/
+
+.ranking_list{
+  margin: 20rpx;
+  background: white;
+  height: 200rpx;
+  display: flex;
+  position: relative;
+}
+.ranking_list image{
+  height: 200rpx;
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+.ranking_list .song_detail .title{
+  font-size: 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.ranking_list .song_text text{
+  font-size: 26rpx;
+  line-height: 32rpx;
+  height: 32rpx;
+}
+.song_text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 430rpx;
+}
+.ranking_list .song_text text.subtitle{
+  color:#bbb;
+}
+.ranking_list .arrow{
+  position: absolute;
+  top: 80rpx;
+  right: 10rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+.ranking_list image.listen,
+.ranking_list text.listen{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  top:150rpx;
+  left:10rpx;
+  color: white;
+}
+.ranking_list text.listen{
+  width: 140rpx;
+  font-size: 24rpx;
+  left: 50rpx;
+  top:155rpx;
+}
+
+/********************search*******************/
+.search .search_text{
+  height: 72rpx;
+  margin: 20rpx;
+  background: white;
+  font-size: 28rpx;
+  color:#ccc;
+  line-height: 72rpx;
+  padding-left: 72rpx;
+}
+.search .search_text:focus{
+  /*width: calc(100vw - 100rpx);*/
+  width: 200rpx;
+}
+.search_hot,.song_box,.search_record{
+  height: calc(100vh - 197rpx);
+  background: white;
+}
+.search_hot .search_title{
+  font-size: 30rpx;
+  font-weight: 800;
+  color:#222;
+}
+.search_hot_text{
+  display: flex; 
+  flex-wrap: wrap;
+}
+.text_hot{
+  border: 3rpx solid #555;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border-radius: 40rpx;
+}
+.text_hot:first-child{
+  color:#fc4524;
+  border: 3rpx solid #fc4524;
+}
+.search_search{
+  position: relative;
+}
+.qx{
+  position: absolute;
+  height: 72rpx;
+  width: 80rpx;
+  background: #f4f4f4;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 72rpx;
+  top: 0;
+  right: 20rpx;
+  color: #555555;
+  z-index: 2;
+}
+/**************song_list**************/
+
+.song_list{
+  display: flex;
+  height: 110rpx;
+  border-bottom: 3rpx solid #e5e5e5;
+  background: white;
+}
+.song_list .song_img{
+  width: 110rpx;
+  height: 110rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.song_list image{
+  width: 44rpx;
+  height: 40rpx;
+}
+.song_list .song_text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.song_list .song_text .song_title{
+  font-size: 38rpx;
+}
+.song_list .song_text .song_subtitle{
+  font-size: 28rpx;
+  color: #808080;
+}
+/*************record****************/
+.record{
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 3rpx solid #e5e5e5;
+}
+.record:last-child{
+  border-bottom: 3rpx solid #fff;
+}
+.record image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.record_left{
+  display: flex;
+  align-items: center;
+}
+.record_left .song_img{
+  width: 120rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record_clear{
+  font-size: 48rpx;
+  height: 90rpx;
+  width: 120rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.clear_all_record{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #47c88a;
+}
+.record_text{
+  width: calc(100vw - 240rpx);
+  height: 90rpx;
+  line-height: 90rpx;
+}

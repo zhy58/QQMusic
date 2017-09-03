@@ -1,0 +1,13 @@
+<!--pages/index/detail/play/play.wxml-->
+<view class="box" style="background: url({{albummid}}) no-repeat;background-size: 100vh;">
+  <view class="play_top">
+    <view class="play_title">
+      <image src="{{albummid}}" class="singer_img"></image>
+      <view class="song_text">
+        <view class="song_name">{{play_data.songname}}</view>
+        <view class="singer_name">{{play_data.singer[0].name}}</view>
+      </view>
+    </view>
+    <image bindtap="pause_click" src="{{play_music == 'true' ? '/images/icon-play.png' : '/images/icon-pause.png'}}" class="play"></image>
+  </view>
+</view>
