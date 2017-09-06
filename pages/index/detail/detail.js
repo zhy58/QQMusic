@@ -15,10 +15,10 @@ Page({
   },
   play_click:function(ev){
     var index=ev.currentTarget.dataset.id;
-    
+    // console.log(index);
     // app.globalData.index=index;
-    app.globalData.play_data = app.globalData.play_data.songlist[index].data;
-    console.log(app.globalData.play_data)
+    app.globalData.data = app.globalData.play_data.songlist[index].data;
+    // console.log(app.globalData.play_data)
     
     // 获取播放id用连接传过去
     // this.setData({

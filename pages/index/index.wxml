@@ -4,7 +4,8 @@
   </block>
 </view>
 
-<view class="recommend" hidden="{{data_index!= 0}}">  
+<view class="recommend" hidden="{{data_index!= 0}}">
+    <!-- 轮播 -->
   <swiper autoplay="ture" indicator-dots="ture" indicator-active-color="#fff">
     <block wx:for="{{swiper.slider}}" wx:key="key">
       <swiper-item class="img">
@@ -51,38 +52,36 @@
 </view>
 
 <view class="ranking" hidden="{{data_index!= 1}}">
+  <view class="box">
+    <block wx:for="{{data_ranking.topList}}" wx:key="key">
+    <view class="ranking_list" bindtap="ranking_click" data-id="{{index}}">
+        <image src="{{item.picUrl}}"></image>
+        <image src="/images/icon-listen.png" class="listen"></image>
+        <text class="listen">{{item.listenCount}}</text>
+        <view class="song_detail">
+          <view class="title">{{item.topTitle}}</view>
 
- <view class="box">
-  <block wx:for="{{data_ranking.topList}}" wx:key="key">
-   <view class="ranking_list" bindtap="ranking_click" data-id="{{index}}">
-      <image src="{{item.picUrl}}"></image>
-      <image src="/images/icon-listen.png" class="listen"></image>
-      <text class="listen">{{item.listenCount}}</text>
+          <block wx:for="{{item.songList}}" wx:key="key">
+            <view class="song_text">
+              <text>{{(index+1) +' '+ item.songname}}</text>
+              <text class="subtitle">{{' - '+item.singername}}</text>
+            </view>
+          </block>
 
-      <view class="song_detail">
-        <view class="title">{{item.topTitle}}</view>
-
-        <block wx:for="{{item.songList}}" wx:key="key">
-          <view class="song_text">
-            <text>{{(index+1) +' '+ item.songname}}</text>
-            <text class="subtitle">{{' - '+item.singername}}</text>
-          </view>
-        </block>
-
+        </view>
+        <view class="arrow"> > </view>
       </view>
-      <view class="arrow"> > </view>
-    </view>
-   </block>
- </view>
-
+    </block>
+  </view>
 </view>
+
 <view class="search" hidden="{{data_index!= 2}}">
-<!--搜索-->
+  <!--搜索-->
   <view class="search_search">
     <input type="search" bindinput="search_key_input" bindtap="input_click" class="search_text" placeholder="搜索歌曲、歌单、专辑"/>
     <text class="qx" bindtap="search_click">搜索</text>
   </view>
-  <!--搜索记录-->
+    <!--搜索记录-->
     <view class="search_record" hidden="{{flag}}">
       <view class="search_all_record">
 
@@ -113,7 +112,7 @@
 
     </view>    
   </view>
-<!--歌曲搜索结果-->
+  <!--歌曲搜索结果-->
   <scroll-view scroll-y="true" bindscrolltolower="scroll_bottom" hidden="{{show}}">
       <view class="song_box">
         <block wx:for="{{search_song}}" wx:key="item">

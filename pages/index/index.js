@@ -1,27 +1,34 @@
-var data_swiper=require("../../utils/util.js");//获取util页面的数据
-var app=getApp(); //全局数据
+let data_swiper=require("../../utils/util.js");//获取util页面的数据
+let app=getApp(); //全局数据
 
 // 函数节流[第一种方法（闭包方法）]（封装返回一个延迟函数）
-var throttle = function (method, delay) {
-  var timer = null;
+let throttle = function (method, delay) {
+  let timer = null;
   return function () {
-    var that = this, context = arguments;
+    let that = this, context = arguments;
     clearTimeout(timer);
     timer = setTimeout(function () {
       method.apply(that, context);
     }, delay);
   }
 };
-var scroll_bottom_data = function () {
-  var page = this.data.page + 1;  
-  var key = this.data.key;
+let scroll_bottom_data = function () {
+  let page = this.data.page + 1;
+  let key = this.data.key;
   this.setData({
     page: page,
     off: true
   });
-  console.log(this.data.page);
+  // console.log(this.data.page);
   this.result(key, page);
 };
+// //函数节流 第二种方法（非闭包方法）
+// function throttle(method,delay,that){
+//   clearTimeout(method.timer);
+//   method.timer=setTimeout(function(){
+//     method.call(that);
+//   },delay);
+// }
 
 Page({
   // index页面的数据（此页面有效）
@@ -39,14 +46,14 @@ Page({
     page:1,
     off:false //第一次调用数据时不用连接concat上一次的数据（也可以判断数据是否为空来代替此属性）
   },
-  onLoad:function(){    
-   var that=this;
-  //  推荐数据获取
+  onLoad:function(){
+   let that=this;
+    // 推荐数据获取
     data_swiper.data_swiper(function(data){
       that.setData({
         swiper: data.data
       })
-      console.log(that.data.swiper); 
+      // console.log(that.data.swiper); 
     });
     // 排行榜数据获取
     data_swiper.data_ranking(function (data) {
@@ -66,7 +73,7 @@ Page({
   },
   // 获取选项卡的index值来改变显示的tab
   tab_click:function(ev){
-    var index=ev.currentTarget.dataset.id;
+    let index=ev.currentTarget.dataset.id;
     // console.log(index);
     this.setData({
       data_index: index
@@ -74,24 +81,26 @@ Page({
   },
   // 获取电台歌单的数据ID，并跳转到详细页面
   radioList_click:function(ev){
-    var that=this;
-    var index=ev.currentTarget.dataset.list;
-    var id = this.data.swiper.radioList[index].radioid;
+    let that=this;
+    let index=ev.currentTarget.dataset.list;
+    let id = that.data.swiper.radioList[index].radioid;
     data_swiper.radioList_data(id, function (data) {        
-        app.globalData.play_data = data.data;        
+        app.globalData.data = data.data;
+        // console.log(app.globalData.data);        
       });
-    // wx.navigateTo({
-      // url: 'detail/detail?id='+id
-    // })
+    wx.navigateTo({
+      url: 'detail/play/play'
+    })
   },
   // 获取歌曲排行榜页面的点击ID值，同时获取该值的数据保存到全局变量
   ranking_click:function(ev){
-    var index=ev.currentTarget.dataset.id;
-    var id = this.data.data_ranking.topList[index].id;
+    let index=ev.currentTarget.dataset.id;
+    let id = this.data.data_ranking.topList[index].id;
     // 播放数据放入全局数据中
     data_swiper.data_ranking_id(id,function(data){
       app.globalData.play_data=data;
     });
+    // console.log(app);
     wx.navigateTo({
       url: 'detail/detail?id='+id
     })
@@ -104,8 +113,8 @@ Page({
   },
   // 执行搜索
   search_click:function(){
-    var key = this.data.key;    
-    var page=this.data.page;
+    let key = this.data.key;    
+    let page=this.data.page;
     // 搜索记录隐藏
     this.setData({
       flag: true,
@@ -124,7 +133,7 @@ Page({
   },
   // 点击搜索文本框显示搜索记录
   input_click:function(){
-    var that = this;
+    let that = this;
     if (!this.data.key_record.length==0){
       this.setData({
         flag: true,
@@ -163,8 +172,8 @@ Page({
   },
   // 获取索引值清除对应的搜索记录
   clear_record:function(ev){
-    var index=ev.currentTarget.dataset.index;
-    var data = this.data.key_record;
+    let index=ev.currentTarget.dataset.index;
+    let data = this.data.key_record;
     data.splice(index, 1);
     // 搜索记录数据为空时，隐藏搜索记录
     if(data.length==0){
@@ -184,27 +193,27 @@ Page({
   }, 
   // 搜索结果跳转播放页面
   song_list_click:function(ev){
-    var index=ev.currentTarget.dataset.id;
-    app.globalData.play_data = this.data.search_song[index];
+    let index=ev.currentTarget.dataset.id;
+    app.globalData.data = this.data.search_song[index];
     wx.navigateTo({
       url: 'detail/play/play',
     })
   },
   // 获取热门搜索的key值后替换数据的key值实现搜索
   hot_key_click:function(ev){
-    var val = ev.currentTarget.dataset.key;
+    let val = ev.currentTarget.dataset.key;
     this.key_search(val);    
   },
   // 搜索记录实现搜索歌曲列表
   record_text_click: function (ev) {
-    var val = ev.currentTarget.dataset.item;
+    let val = ev.currentTarget.dataset.item;
     this.key_search(val);
   },
   // 封装输入key值后的搜索结果数据列表
   result: function (key,page){
-    var that=this;    
+    let that=this;    
     data_swiper.search_song_data(key,page,function (data) {
-      var search_song = data.data.song.list;
+      let search_song = data.data.song.list;
       if(!key) return;
       //也可以判断that.data.search_song中是否具有数据来替换that.data.off
       if (that.data.off) {        
@@ -220,8 +229,8 @@ Page({
   },
   // 封装获取key值后实现搜索歌曲列表
   key_search:function(val){
-    var that=this;
-    var page = that.data.page;
+    let that=this;
+    let page = that.data.page;
     
     // 不能缺少这句（无法继续调用第二页的接口）
     that.setData({
@@ -239,10 +248,3 @@ Page({
 
 
 })
-// //函数节流 第二种方法（非闭包方法）
-// function throttle(method,delay,that){
-//   clearTimeout(method.timer);
-//   method.timer=setTimeout(function(){
-//     method.call(that);
-//   },delay);
-// }

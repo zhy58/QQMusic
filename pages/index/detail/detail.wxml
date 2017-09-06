@@ -1,12 +1,13 @@
 <!--pages/index/detail/detail.wxml-->
 <view class="box">
-  <image src="https://y.gtimg.cn/music/photo_new/T002R300x300M000003CdjjB1Jgzjk.jpg"></image>
+  <!-- <image src="https://y.gtimg.cn/music/photo_new/T002R300x300M000003CdjjB1Jgzjk.jpg"></image> -->
+  <image src="{{list_data.topinfo.pic_album}}"></image>
   <view class="text container">
     <view class="title_text">
-      <text class="title">巅峰榜</text>
-      <text class="subtitle">流行指数</text>
+      <text class="title">{{list_data.topinfo.ListName}}</text>
+      <!-- <text class="subtitle">流行指数</text> -->
     </view>
-    <text class="updata">2017-07-05 更新</text>
+    <text class="updata">{{list_data.update_time + '更新'}}</text>
     <image src="/images/icon-play.png" class="play"></image>
   </view>
 </view>
@@ -17,7 +18,7 @@
    <view class="list" bindtap="play_click" data-id="{{index}}">
       <text class="number">{{index+1}}</text>
       <view class="list_text">
-        <view class="title">{{item.data.albumname}}</view>
+        <view class="title">{{item.data.songname}}</view>
         <view class="list_subtitle">{{item.data.singer[0].name+" • "+item.data.albumname+item.data.albumdesc}}</view>
       </view>
     </view>

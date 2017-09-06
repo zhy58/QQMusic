@@ -1,16 +1,20 @@
-var app=getApp();
-// console.log(app);
+let app=getApp();
+
 Page({
   data:{
-    paly_music:true
+    paly_music:true,
+    key:0
   },
   onLoad:function(opation){   
-    // var id=opation.id;  //接收超链接传的播放id字符串    
-
-    var play_data = app.globalData.play_data;
-    //console.log(play_data.length);
-    
-    // 判断传过来的对象是不是一个数组
+    // var id=opation.id;  //接收超链接传的播放id字符串 
+    // 判断传过来的对象是不是一个数组 
+    // let play_data = [];
+    // if (app.globalData.data instanceof Array){
+    //   let play_data = app.globalData.data;  
+    // }else{      
+    //   arr_data.push(app.globalData.data);
+    // } 
+    let play_data = app.globalData.data;
     this.setData({
       play_data: play_data,
       albummid: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + play_data.albummid+ '.jpg'
@@ -21,21 +25,21 @@ Page({
       title: play_data.songname,
       coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' +play_data.albummid+ '.jpg'
     });
-    this.paly_data('false');
+    this.play('false');
   },
   // 控制音乐播放暂停
   pause_click:function(){
-    var that=this;
+    let that=this;
     if (this.data.play_music == 'true'){
       wx.playBackgroundAudio({
         dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + that.data.play_data.songmid + '.m4a?fromtag=38',
         title: that.data.play_data.songname,
         coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + that.data.play_data.albummid + '.jpg'
       });
-      that.paly_data('false');      
+      that.play('false');      
     }else{
       wx.pauseBackgroundAudio();
-      that.paly_data('true');
+      that.play('true');
       //console.log(that.data.play_music);
     }    
   },
@@ -44,7 +48,7 @@ Page({
     wx.stopPullDownRefresh()
   },
   // 封装一个属性值来改变音乐播放暂停
-  paly_data:function(val){
+  play:function(val){
     this.setData({
       play_music : val
     });
