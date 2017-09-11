@@ -1,13 +1,30 @@
 <!--pages/index/detail/play/play.wxml-->
-<view class="box" style="background: url({{albummid}}) no-repeat;background-size: 100vh;">
+<view class="bg" style="background: url({{albummid}}) no-repeat;background-size: 100vh;"></view>
+<view class="box">  
   <view class="play_top">
     <view class="play_title">
       <image src="{{albummid}}" class="singer_img"></image>
       <view class="song_text">
-        <view class="song_name">{{play_data.songname}}</view>
+        <view class="song_name">{{play_data.songname ? play_data.songname : play_data.title}}</view>
         <view class="singer_name">{{play_data.singer[0].name}}</view>
       </view>
     </view>
     <image bindtap="pause_click" src="{{play_music == 'true' ? '/images/icon-play.png' : '/images/icon-pause.png'}}" class="play"></image>
+  </view>
+  <view class="play_controller">
+    <view class='icon_controller icon_l'>
+       <image src='/images/icon-earth.png'></image>      
+    </view>
+    <view class='icon_controller icon_r'>
+       <image src='/images/icon-earth.png'></image>      
+    </view>
+    <view class='progress_bar'>
+      <!-- <text>00:01</text> -->
+      <view class='bar_bottom'>
+        <view class='bar'></view>
+      </view>
+      <!-- <text>05:39</text> -->
+    </view>
+
   </view>
 </view>

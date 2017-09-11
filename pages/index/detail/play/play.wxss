@@ -1,7 +1,19 @@
 /* pages/index/detail/play/play.wxss */
 .box{
+  height: 100vh;  
+  width: 100vw;
+  position: relative;
+  background: rgba(0,0,0,.2);
+  /* overflow: hidden; */
+}
+.bg{
+  position: absolute;
   height: 100vh;
   width: 100vw;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  filter: blur(15px);
 }
 .play_top{
   height: 170rpx;
@@ -35,4 +47,29 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.play_controller{
+  width: 100vw;
+  height: 310rpx;
+  background: white;
+  /* background: transparent; */
+  position: fixed;
+  bottom: 0rpx; 
+  left: 0;
+}
+.icon_controller{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top:20rpx;
+}
+.icon_l{
+  left: 30rpx;
+}
+.icon_r{
+  right: 30rpx;
+}
+.icon_controller image{
+  width: 100%;
+  height: 100%;
 }

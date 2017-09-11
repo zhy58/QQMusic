@@ -1,10 +1,8 @@
 {
-  "pages":[
-     
+  "pages":[    
     "pages/index/index",
     "pages/index/detail/detail",
-    "pages/index/detail/play/play"
-    
+    "pages/index/detail/play/play"   
   ],
   "window":{
     "backgroundTextStyle":"light",
